@@ -19,6 +19,7 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
+
         List<AUser> list = aUserMapper.selectList(null);
         return "index.html";
     }
