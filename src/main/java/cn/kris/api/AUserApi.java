@@ -8,12 +8,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RestController
 @Api(tags = "用户管理相关接口")
@@ -30,9 +28,9 @@ public class AUserApi {
             @ApiImplicitParam(name = "password", value = "密码" , required = true, paramType = "query", dataType = "String")
     })
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public Object login(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+    public Object login(@RequestBody Map<String, Object> param) {
+        String username = param.get("username").toString();
+        String password = param.get("password").toString();
 
         QueryWrapper<AUser> aUserWrapper = new QueryWrapper<>();
         aUserWrapper.eq("username", username);
