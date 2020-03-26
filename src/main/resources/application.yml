@@ -7,6 +7,17 @@ spring:
     username: root
     password: kris.C19970717
     url: jdbc:mysql://121.42.229.206:3306/awes?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&usessl=false
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    lettuce:
+      pool:
+        max-active: 32
+        max-wait: 300ms
+        max-idle: 16
+        min-idle: 8
 
 mybatis-plus:
   # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
